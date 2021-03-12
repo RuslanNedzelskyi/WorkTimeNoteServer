@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Threading.Tasks;
 using WorkTimeNoteDomain.DbConnectionFactory.Contracts;
 using WorkTimeNoteDomain.Entities;
@@ -10,7 +9,7 @@ using WorkTimeNoteServices.TimeNoteServices.Contracts;
 
 namespace WorkTimeNoteServices.TimeNoteServices
 {
-    public sealed class TimeNoteService : ITimeNoteService
+    public class TimeNoteService : ITimeNoteService
     {
         private readonly IDbConnectionFactory _connectionFactory;
         private readonly ITimeNoteFactoryRepository _timeNoteFactoryRepository;

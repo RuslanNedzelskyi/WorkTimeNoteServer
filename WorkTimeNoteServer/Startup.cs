@@ -9,6 +9,10 @@ using WorkTimeNoteCommon;
 using WorkTimeNoteCommon.WebApi.ResponseFactory;
 using WorkTimeNoteCommon.WebApi.ResponseFactory.Contracts;
 using WorkTimeNoteDataBase;
+using WorkTimeNoteDomain.DbConnectionFactory;
+using WorkTimeNoteDomain.DbConnectionFactory.Contracts;
+using WorkTimeNoteDomain.Repositories.TimeNoteRepositories;
+using WorkTimeNoteDomain.Repositories.TimeNoteRepositories.Contracts;
 using WorkTimeNoteServices.TimeNoteServices;
 using WorkTimeNoteServices.TimeNoteServices.Contracts;
 
@@ -35,6 +39,9 @@ namespace WorkTimeNoteServer
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IResponseFactory, ResponseFactory>();
+            services.AddTransient<IDbConnectionFactory, DbConnectionFactory>();
+
+            services.AddTransient<ITimeNoteFactoryRepository, TimeNoteFactoryRepository>();
 
             services.AddTransient<ITimeNoteService, TimeNoteService>();
         }
@@ -45,6 +52,13 @@ namespace WorkTimeNoteServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+            );
 
             app.UseRouting();
 
