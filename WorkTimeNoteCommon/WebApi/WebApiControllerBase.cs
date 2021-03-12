@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using WorkTimeNoteServer.Common.WebApi.ResponseFactory.Contracts;
+using WorkTimeNoteCommon.WebApi.ResponseFactory.Contracts;
 
-namespace WorkTimeNoteServer.Common.WebApi
+namespace WorkTimeNoteCommon.WebApi
 {
     public abstract class WebApiControllerBase : Controller
     {

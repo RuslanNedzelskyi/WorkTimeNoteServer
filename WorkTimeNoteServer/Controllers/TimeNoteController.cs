@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using WorkTimeNoteServer.Common.ApiConsts;
-using WorkTimeNoteServer.Common.ApiConsts.ActionNames;
-using WorkTimeNoteServer.Common.WebApi;
-using WorkTimeNoteServer.Common.WebApi.ResponseFactory.Contracts;
-using WorkTimeNoteServer.Entities;
+using System.Net;
+using System.Threading.Tasks;
+using WorkTimeNoteCommon;
+using WorkTimeNoteCommon.ApiConsts;
+using WorkTimeNoteCommon.ApiConsts.ActionNames;
+using WorkTimeNoteCommon.WebApi;
+using WorkTimeNoteCommon.WebApi.ResponseFactory.Contracts;
+using WorkTimeNoteDomain.Entities;
+using WorkTimeNoteServices.TimeNoteServices.Contracts;
 
 namespace WorkTimeNoteServer.Controllers
 {
@@ -15,32 +16,70 @@ namespace WorkTimeNoteServer.Controllers
     [Route(ApiSegments.TIME_NOTE)]
     public class TimeNoteController : WebApiControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly ITimeNoteService _timeNoteService;
 
         public TimeNoteController(
-            IResponseFactory responseFactory)
+            IResponseFactory responseFactory,
+            ITimeNoteService timeNoteService)
             : base(responseFactory)
         {
+            _timeNoteService = timeNoteService;
         }
 
         [HttpGet]
         [Route(TimeNoteActionNames.GET_ALL)]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAllAsync() =>
+            Ok(SuccessResponseBody(await _timeNoteService.GetAll()));
+
+        [HttpPost]
+        [Route(TimeNoteActionNames.NEW)]
+        public async Task<IActionResult> NewAsync(
+            [FromBody] TimeNote timeNote)
         {
-            Random rng = new Random();
-
-            WeatherForecast[] response = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return Ok(SuccessResponseBody(await _timeNoteService.New(timeNote), MessageConsts.SUCCESS_NEW_TIME_NOTE));
+            }
+            catch
+            {
+                return BadRequest(ErrorResponseBody(MessageConsts.ERROR_NEW_TIME_NOTE, HttpStatusCode.BadRequest));
+            }
+        }
 
-            return Ok(SuccessResponseBody(response));
+        [HttpPost]
+        [Route(TimeNoteActionNames.UPDATE)]
+        public async Task<IActionResult> UpdateAsync(
+            [FromBody] TimeNote timeNote)
+        {
+            try
+            {
+                if (timeNote.IsNew())
+                    return BadRequest(ErrorResponseBody(MessageConsts.ERROR_UPDATE_TIME_NOTE, HttpStatusCode.BadRequest));
+
+                return Ok(SuccessResponseBody(await _timeNoteService.Update(timeNote), MessageConsts.SUCCESS_UPDATE_TIME_NOTE));
+            }
+            catch
+            {
+                return BadRequest(ErrorResponseBody(MessageConsts.ERROR_UPDATE_TIME_NOTE, HttpStatusCode.BadRequest));
+            }
+        }
+
+        [HttpPost]
+        [Route(TimeNoteActionNames.REMOVE)]
+        public async Task<IActionResult> RemoveAsync(
+            [FromQuery] Guid netId)
+        {
+            try
+            {
+                if (netId.Equals(Guid.Empty))
+                    return BadRequest(ErrorResponseBody(MessageConsts.ERROR_REMOVE_TIME_NOTE, HttpStatusCode.BadRequest));
+
+                return Ok(SuccessResponseBody(await _timeNoteService.Remove(netId), MessageConsts.SUCCESS_REMOVE_TIME_NOTE));
+            }
+            catch
+            {
+                return BadRequest(ErrorResponseBody(MessageConsts.ERROR_REMOVE_TIME_NOTE, HttpStatusCode.BadRequest));
+            }
         }
     }
 }

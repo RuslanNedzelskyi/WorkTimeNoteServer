@@ -1,6 +1,6 @@
-﻿using WorkTimeNoteServer.Common.WebApi.ResponseFactory.Contracts;
+﻿using WorkTimeNoteCommon.WebApi.ResponseFactory.Contracts;
 
-namespace WorkTimeNoteServer.Common.WebApi.ResponseFactory
+namespace WorkTimeNoteCommon.WebApi.ResponseFactory
 {
     public sealed class ResponseFactory : IResponseFactory
     {

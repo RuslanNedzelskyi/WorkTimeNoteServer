@@ -1,4 +1,4 @@
-﻿namespace WorkTimeNoteServer.Common.WebApi.ResponseFactory.Contracts
+﻿namespace WorkTimeNoteCommon.WebApi.ResponseFactory.Contracts
 {
     public interface IResponseFactory
     {

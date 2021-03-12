@@ -1,4 +1,4 @@
-﻿namespace WorkTimeNoteServer.Common.ApiConsts.ActionNames
+﻿namespace WorkTimeNoteCommon.ApiConsts.ActionNames
 {
     public sealed class TimeNoteActionNames
     {
@@ -8,6 +8,6 @@
 
         public const string GET_ALL = "all/get";
 
-        public const string GET = "get";
+        public const string REMOVE = "remove";
     }
 }

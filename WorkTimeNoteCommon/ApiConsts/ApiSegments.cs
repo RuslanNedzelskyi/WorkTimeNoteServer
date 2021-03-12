@@ -1,4 +1,4 @@
-﻿namespace WorkTimeNoteServer.Common.ApiConsts
+﻿namespace WorkTimeNoteCommon.ApiConsts
 {
     public sealed class ApiSegments
     {

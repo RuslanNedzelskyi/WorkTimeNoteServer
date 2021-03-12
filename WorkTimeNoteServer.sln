@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeNoteServer", "WorkTimeNoteServer\WorkTimeNoteServer.csproj", "{7B564DC0-1139-4E77-9E01-1191A2F4E470}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkTimeNoteServer", "WorkTimeNoteServer\WorkTimeNoteServer.csproj", "{7B564DC0-1139-4E77-9E01-1191A2F4E470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeNoteDomain", "WorkTimeNoteDomain\WorkTimeNoteDomain.csproj", "{12C1C571-14EF-415D-86DD-C72A8EBE0179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeNoteCommon", "WorkTimeNoteCommon\WorkTimeNoteCommon.csproj", "{D7FBDEEC-1CBF-4AD9-AB55-2E70D4A5F54C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeNoteDataBase", "WorkTimeNoteDataBase\WorkTimeNoteDataBase.csproj", "{F37F8EAD-D7D3-43DB-BC42-378CC1A0D696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeNoteServices", "WorkTimeNoteServices\WorkTimeNoteServices.csproj", "{C7948932-38A3-4853-B45D-DB0030A701FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{7B564DC0-1139-4E77-9E01-1191A2F4E470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B564DC0-1139-4E77-9E01-1191A2F4E470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B564DC0-1139-4E77-9E01-1191A2F4E470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C1C571-14EF-415D-86DD-C72A8EBE0179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C1C571-14EF-415D-86DD-C72A8EBE0179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C1C571-14EF-415D-86DD-C72A8EBE0179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C1C571-14EF-415D-86DD-C72A8EBE0179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7FBDEEC-1CBF-4AD9-AB55-2E70D4A5F54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7FBDEEC-1CBF-4AD9-AB55-2E70D4A5F54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7FBDEEC-1CBF-4AD9-AB55-2E70D4A5F54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7FBDEEC-1CBF-4AD9-AB55-2E70D4A5F54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37F8EAD-D7D3-43DB-BC42-378CC1A0D696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37F8EAD-D7D3-43DB-BC42-378CC1A0D696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37F8EAD-D7D3-43DB-BC42-378CC1A0D696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37F8EAD-D7D3-43DB-BC42-378CC1A0D696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7948932-38A3-4853-B45D-DB0030A701FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7948932-38A3-4853-B45D-DB0030A701FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7948932-38A3-4853-B45D-DB0030A701FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7948932-38A3-4853-B45D-DB0030A701FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
