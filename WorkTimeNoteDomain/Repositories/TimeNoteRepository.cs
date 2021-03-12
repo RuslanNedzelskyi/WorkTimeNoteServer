@@ -31,7 +31,7 @@ namespace WorkTimeNoteDomain.Repositories
             _connection.Execute(
                 "UPDATE [TimeNotes] " +
                 "SET [Updated] = GETUTCDATE() " +
-                ", [Deleted] = 0 " +
+                ", [Deleted] = 1 " +
                 "WHERE [NetID] = @NewId ",
                 new { NewId = netId });
 
@@ -43,6 +43,7 @@ namespace WorkTimeNoteDomain.Repositories
                 ", [Start] = @Start " +
                 ", [End] = @End " +
                 ", [Value] = @Value " +
+                ", [Rate] = @Rate " +
                 "WHERE [ID] = @Id ",
                 timeNote);
     }

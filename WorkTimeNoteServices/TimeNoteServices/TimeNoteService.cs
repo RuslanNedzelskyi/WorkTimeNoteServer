@@ -43,7 +43,7 @@ namespace WorkTimeNoteServices.TimeNoteServices
 
                     TimeSpan span = timeNote.End.Subtract(timeNote.Start);
 
-                    if (span.Hours < 0)
+                    if (span.TotalHours < 0)
                         throw new Exception();
 
                     timeNote.Value = span.Hours * timeNote.Rate;
@@ -78,7 +78,7 @@ namespace WorkTimeNoteServices.TimeNoteServices
 
                     TimeSpan span = timeNote.End.Subtract(timeNote.Start);
 
-                    if (span.Hours < 0)
+                    if (span.TotalHours < 0)
                         throw new Exception();
 
                     timeNote.Value = span.Hours * timeNote.Rate;
